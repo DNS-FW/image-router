@@ -37,15 +37,9 @@
                   };
 
                   function getImageNumber() {
-                                const pathParts = window.location.pathname.split('/');
-                                let lastPart = pathParts[pathParts.length - 1];
-                                const digitsOnly = lastPart.replace(/\D/g, '');
-
-                                if (!digitsOnly) {
-                                                  return null;
-                                }
-
-                                return digitsOnly[digitsOnly.length - 1];
+                      const query = window.location.search.replace('?', '');
+                      const digit = query.replace(/\D/g, '');
+                      return digit ? digit[digit.length - 1] : null;
                   }
 
                   function loadImage() {
@@ -63,7 +57,7 @@
                   loadImage();
         </script>
   </body>
-</html>html>
+</html>
         </script>
   </body>
       </style></title>
