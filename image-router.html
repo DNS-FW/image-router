@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Image Router</title>
+      <style>
+                body {
+                              margin: 0;
+                              padding: 0;
+                              background-color: #f5f5f5;
+                }
+                img {
+                              display: block;
+                              width: 100%;
+                              height: 100%;
+                              object-fit: contain;
+                }
+            </style>
+  </head>
+  <body>
+        <img id="router-image" alt="Image" />
+
+        <script>
+                  // Image mapping
+                  const imageMap = {
+                                1: 'https://via.placeholder.com/800?text=Image+1',
+                                2: 'https://via.placeholder.com/800?text=Image+2',
+                                3: 'https://via.placeholder.com/800?text=Image+3',
+                                4: 'https://via.placeholder.com/800?text=Image+4',
+                                5: 'https://via.placeholder.com/800?text=Image+5',
+                                6: 'https://via.placeholder.com/800?text=Image+6',
+                                7: 'https://via.placeholder.com/800?text=Image+7',
+                                8: 'https://via.placeholder.com/800?text=Image+8',
+                                9: 'https://via.placeholder.com/800?text=Image+9',
+                                0: 'https://via.placeholder.com/800?text=Image+0'
+                  };
+
+                  function getImageNumber() {
+                                const pathParts = window.location.pathname.split('/');
+                                let lastPart = pathParts[pathParts.length - 1];
+                                const digitsOnly = lastPart.replace(/\D/g, '');
+
+                                if (!digitsOnly) {
+                                                  return null;
+                                }
+
+                                return digitsOnly[digitsOnly.length - 1];
+                  }
+
+                  function loadImage() {
+                                const imageNum = getImageNumber();
+                                const img = document.getElementById('router-image');
+
+                                if (imageNum !== null && imageMap[imageNum]) {
+                                                  img.src = imageMap[imageNum];
+                                } else {
+                                                  img.src = 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22%3E%3Crect fill=%22%23ddd%22 width=%22400%22 height=%22300%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dominant-baseline=%22middle%22 font-family=%22Arial%22 font-size=%2220%22 fill=%22%23999%22%3ENo image found%3C/text%3E%3C/svg%3E';
+                                }
+                  }
+
+                  window.addEventListener('load', loadImage);
+                  loadImage();
+        </script>
+  </body>
+</html>html>
+        </script>
+  </body>
+      </style></title>
+  </head>
